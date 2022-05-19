@@ -1,14 +1,14 @@
 package com.example.mangaapp.data.remote.response
 
-import com.google.gson.annotations.SerializedName
+import com.squareup.moshi.Json
 
 data class MangaResponsesDemographic(
-    @SerializedName("mal_id")
+    @Json(name = "mal_id")
     val malId: Int,
-    @SerializedName("name")
+    @Json(name = "name")
     val name: String,
-    @SerializedName("type")
+    @Json(name = "type")
     val type: String,
-    @SerializedName("url")
+    @Json(name = "url")
     val url: String
 )

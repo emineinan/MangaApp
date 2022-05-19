@@ -1,52 +1,53 @@
 package com.example.mangaapp.data.remote.response
 
-import com.google.gson.annotations.SerializedName
+
+import com.squareup.moshi.Json
 
 data class MangaResponsesData(
-    @SerializedName("mal_id")
-    val mal_id: Int,
-    @SerializedName("authors")
-    val authors: List<MangaResponsesAuthor>,
-    @SerializedName("chapters")
-    val chapters: Int,
-    @SerializedName("demographics")
-    val demographics: List<MangaResponsesDemographic>,
-    @SerializedName("genres")
-    val genres: List<MangaResponsesGenre>,
-    @SerializedName("images")
-    val images: MangaResponsesImages,
-    @SerializedName("members")
-    val members: Int,
-    @SerializedName("popularity")
-    val popularity: Int,
-    @SerializedName("published")
-    val published: MangaResponsesPublished,
-    @SerializedName("rank")
-    val rank: Int,
-    @SerializedName("scored")
-    val scored: Double,
-    @SerializedName("scored_by")
-    val scoredBy: Int,
-    @SerializedName("serializations")
-    val serializations: List<MangaResponsesSerialization>,
-    @SerializedName("status")
-    val status: String,
-    @SerializedName("synopsis")
-    val synopsis: String,
-    @SerializedName("themes")
-    val themes: List<MangaResponsesTheme>,
-    @SerializedName("title")
-    val title: String,
-    @SerializedName("title_english")
-    val titleEnglish: String,
-    @SerializedName("title_japanese")
-    val titleJapanese: String,
-    @SerializedName("title_synonyms")
-    val titleSynonyms: List<String>,
-    @SerializedName("type")
-    val type: String,
-    @SerializedName("url")
-    val url: String,
-    @SerializedName("volumes")
-    val volumes: Int
+    @Json(name = "mal_id")
+    val mal_id: Int?,
+    @Json(name = "authors")
+    val authors: List<MangaResponsesAuthor>?,
+    @Json(name = "chapters")
+    val chapters: Int?,
+    @Json(name = "demographics")
+    val demographics: List<MangaResponsesDemographic>?,
+    @Json(name = "genres")
+    val genres: List<MangaResponsesGenre>?,
+    @Json(name = "images")
+    val images: MangaResponsesImages?,
+    @Json(name = "members")
+    val members: Int?,
+    @Json(name = "popularity")
+    val popularity: Int?,
+    @Json(name = "published")
+    val published: MangaResponsesPublished?,
+    @Json(name = "rank")
+    val rank: Int?,
+    @Json(name = "scored")
+    val scored: Double?,
+    @Json(name = "scored_by")
+    val scoredBy: Int?,
+    @Json(name = "serializations")
+    val serializations: List<MangaResponsesSerialization>?,
+    @Json(name = "status")
+    val status: String?,
+    @Json(name = "synopsis")
+    val synopsis: String?,
+    @Json(name = "themes")
+    val themes: List<MangaResponsesTheme>?,
+    @Json(name = "title")
+    val title: String?,
+    @Json(name = "title_english")
+    val titleEnglish: String?,
+    @Json(name = "title_japanese")
+    val titleJapanese: String?,
+    @Json(name = "title_synonyms")
+    val titleSynonyms: List<String>?,
+    @Json(name = "type")
+    val type: String?,
+    @Json(name = "url")
+    val url: String?,
+    @Json(name = "volumes")
+    val volumes: Int?
 )

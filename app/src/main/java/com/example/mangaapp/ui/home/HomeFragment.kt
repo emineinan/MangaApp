@@ -1,17 +1,25 @@
 package com.example.mangaapp.ui.home
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.mangaapp.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import com.example.mangaapp.databinding.FragmentHomeBinding
+import com.example.mangaapp.ui.adapter.MangaAdapter
+
 class HomeFragment : Fragment() {
+    private val viewModel: HomeViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        val binding = FragmentHomeBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        binding.recyclerViewHome.adapter = MangaAdapter()
+        return binding.root
     }
 }
