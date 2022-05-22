@@ -34,7 +34,6 @@ class HomeViewModel @Inject constructor(
                 _status.value = Status.DONE
             } catch (e: Exception) {
                 _status.value = Status.ERROR
-                Log.e("HATAA",e.message.toString())
                 _mangas.value?.data= listOf()
             }
         }

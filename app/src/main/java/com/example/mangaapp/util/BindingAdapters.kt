@@ -26,8 +26,8 @@ fun bindImage(imageView: ImageView, imageUrl: String?) {
 @BindingAdapter("listHomeData")
 fun bindHomeRecyclerView(recyclerView: RecyclerView,
                      data: List<MangaResponsesData>?) {
-    val adapter = recyclerView.adapter as MangaAdapter
-    adapter.submitList(data)
+    val adapter = recyclerView.adapter as MangaAdapter?
+    adapter?.submitList(data)
 }
 
 @BindingAdapter("listFavoriteData")
