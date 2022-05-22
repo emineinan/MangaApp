@@ -7,7 +7,9 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.mangaapp.R
+import com.example.mangaapp.data.local.entity.FavoritesEntity
 import com.example.mangaapp.data.remote.response.MangaResponsesData
+import com.example.mangaapp.ui.adapter.FavoritesAdapter
 import com.example.mangaapp.ui.adapter.MangaAdapter
 
 @BindingAdapter("imageUrl")
@@ -21,25 +23,32 @@ fun bindImage(imageView: ImageView, imageUrl: String?) {
     }
 }
 
-@BindingAdapter("listData")
-fun bindRecyclerView(recyclerView: RecyclerView,
+@BindingAdapter("listHomeData")
+fun bindHomeRecyclerView(recyclerView: RecyclerView,
                      data: List<MangaResponsesData>?) {
     val adapter = recyclerView.adapter as MangaAdapter
     adapter.submitList(data)
 }
 
+@BindingAdapter("listFavoriteData")
+fun bindFavoriteRecyclerView(recyclerView: RecyclerView,
+                     data: List<FavoritesEntity>?) {
+    val adapter = recyclerView.adapter as FavoritesAdapter
+    adapter.submitList(data)
+}
+
 @BindingAdapter("marsApiStatus")
-fun bindStatus(statusImageView: ImageView, status: MangaApiStatus?) {
+fun bindStatus(statusImageView: ImageView, status: Status?) {
     when (status) {
-        MangaApiStatus.LOADING -> {
+        Status.LOADING -> {
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.ic_loading)
         }
-        MangaApiStatus.ERROR -> {
+        Status.ERROR -> {
             statusImageView.visibility = View.VISIBLE
             statusImageView.setImageResource(R.drawable.ic_connection_error)
         }
-        MangaApiStatus.DONE -> {
+        Status.DONE -> {
             statusImageView.visibility = View.GONE
         }
         else -> {}

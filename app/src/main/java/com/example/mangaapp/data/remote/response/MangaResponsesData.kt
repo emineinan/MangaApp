@@ -1,8 +1,11 @@
 package com.example.mangaapp.data.remote.response
 
 
+import android.os.Parcelable
 import com.squareup.moshi.Json
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class MangaResponsesData(
     @Json(name = "mal_id")
     val mal_id: Int?,
@@ -50,4 +53,4 @@ data class MangaResponsesData(
     val url: String?,
     @Json(name = "volumes")
     val volumes: Int?
-)
+): Parcelable

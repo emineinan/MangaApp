@@ -2,16 +2,18 @@ package com.example.mangaapp.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mangaapp.data.remote.response.MangaResponsesData
 import com.example.mangaapp.databinding.ItemMangaGridBinding
+import com.example.mangaapp.ui.home.HomeFragmentDirections
 
 class MangaAdapter :
     ListAdapter<MangaResponsesData, MangaAdapter.MyViewHolder>(DiffCallback) {
 
-    class MyViewHolder(private var binding: ItemMangaGridBinding) :
+    class MyViewHolder(var binding: ItemMangaGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(manga: MangaResponsesData) {
             binding.manga = manga
@@ -42,5 +44,10 @@ class MangaAdapter :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val manga = getItem(position)
         holder.bind(manga)
+
+        holder.binding.cardViewmangaItem.setOnClickListener {
+            val action = HomeFragmentDirections.actionHomeFragmentToMangaDetailFragment(manga)
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 }
