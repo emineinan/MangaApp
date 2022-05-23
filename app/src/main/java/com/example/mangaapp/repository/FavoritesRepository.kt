@@ -22,4 +22,8 @@ class FavoritesRepository @Inject constructor(
     suspend fun deleteFavoriteManga(favoritesEntity: FavoritesEntity) {
         return favoritesDatabase.favoritesDao().deleteFavoriteManga(favoritesEntity)
     }
+
+    suspend fun deleteAllFavorites(){
+       return favoritesDatabase.favoritesDao().deleteAllFavorites()
+    }
 }

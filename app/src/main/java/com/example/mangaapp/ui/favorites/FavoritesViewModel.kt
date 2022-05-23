@@ -8,13 +8,15 @@ import com.example.mangaapp.data.local.entity.FavoritesEntity
 import com.example.mangaapp.repository.FavoritesRepository
 import com.example.mangaapp.util.Status
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class FavoritesViewModel @Inject constructor(
     private val favoritesRepository: FavoritesRepository
-): ViewModel() {
+) : ViewModel() {
     private val _status = MutableLiveData<Status>()
     val status: LiveData<Status> = _status
 
@@ -25,7 +27,7 @@ class FavoritesViewModel @Inject constructor(
         getMangas()
     }
 
-    private fun getMangas() {
+    fun getMangas() {
         viewModelScope.launch {
             _status.value = Status.LOADING
             try {
@@ -33,8 +35,14 @@ class FavoritesViewModel @Inject constructor(
                 _status.value = Status.DONE
             } catch (e: Exception) {
                 _status.value = Status.ERROR
-                _favoriteMangas.value= listOf()
+                _favoriteMangas.value = listOf()
             }
+        }
+    }
+
+    fun deleteAllFavorites() {
+        CoroutineScope(Dispatchers.IO).launch {
+            favoritesRepository.deleteAllFavorites()
         }
     }
 }

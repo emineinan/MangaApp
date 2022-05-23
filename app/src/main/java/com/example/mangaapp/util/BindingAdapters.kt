@@ -33,8 +33,8 @@ fun bindHomeRecyclerView(recyclerView: RecyclerView,
 @BindingAdapter("listFavoriteData")
 fun bindFavoriteRecyclerView(recyclerView: RecyclerView,
                      data: List<FavoritesEntity>?) {
-    val adapter = recyclerView.adapter as FavoritesAdapter
-    adapter.submitList(data)
+    val adapter = recyclerView.adapter as FavoritesAdapter?
+    adapter?.submitList(data)
 }
 
 @BindingAdapter("marsApiStatus")

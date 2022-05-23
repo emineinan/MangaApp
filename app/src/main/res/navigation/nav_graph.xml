@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.mangaapp.ui.home.HomeFragment"
-        android:label="Home" >
+        android:label="@string/home">
         <action
             android:id="@+id/action_homeFragment_to_mangaDetailFragment"
             app:destination="@id/mangaDetailFragment" />
@@ -16,15 +16,21 @@
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.mangaapp.ui.favorites.FavoritesFragment"
-        android:label="Favorites"
+        android:label="@string/favorites"
         tools:layout="@layout/fragment_favorites" />
     <fragment
         android:id="@+id/mangaDetailFragment"
         android:name="com.example.mangaapp.ui.detail.MangaDetailFragment"
-        android:label="MangaDetailFragment" >
+        android:label="@string/detail">
         <argument
             android:name="manga"
             app:argType="com.example.mangaapp.data.remote.response.MangaResponsesData"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_mangaDetailFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_mangaDetailFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment" />
     </fragment>
 </navigation>
