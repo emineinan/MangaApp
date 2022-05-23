@@ -12,14 +12,17 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
+    private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentHomeBinding.inflate(inflater)
-
+        binding = FragmentHomeBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+        binding.recyclerViewHome.adapter = MangaAdapter()
         return binding.root
     }
 }

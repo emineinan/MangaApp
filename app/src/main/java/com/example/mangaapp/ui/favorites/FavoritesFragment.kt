@@ -5,14 +5,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.mangaapp.R
+import androidx.fragment.app.viewModels
+import com.example.mangaapp.databinding.FragmentFavoritesBinding
+import com.example.mangaapp.ui.adapter.FavoritesAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoritesFragment : Fragment() {
+    private lateinit var binding: FragmentFavoritesBinding
+    private val viewModel: FavoritesViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_favorites, container, false)
+    ): View {
+        binding = FragmentFavoritesBinding.inflate(layoutInflater)
+        binding.lifecycleOwner = this
+        binding.favoriteViewModel = viewModel
+        binding.recyclerViewHome.adapter = FavoritesAdapter()
+        return binding.root
     }
 }
