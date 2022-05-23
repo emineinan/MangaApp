@@ -15,7 +15,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class FavoritesFragment : Fragment() {
     private lateinit var binding: FragmentFavoritesBinding
     private val viewModel: FavoritesViewModel by viewModels()
-    private val adapter: FavoritesAdapter by lazy { FavoritesAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
