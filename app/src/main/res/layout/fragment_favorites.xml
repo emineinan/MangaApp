@@ -30,16 +30,16 @@
             tools:itemCount="16"
             tools:listitem="@layout/item_manga_grid" />
 
-        <ImageView
-            android:id="@+id/imageViewStatus"
+        <TextView
+            android:id="@+id/textViewNoData"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/status"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:marsApiStatus="@{favoriteViewModel.status}" />
+            android:textSize="18sp"
+            app:dataCheck="@{favoriteViewModel.favoriteMangas}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
