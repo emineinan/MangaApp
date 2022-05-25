@@ -2,12 +2,13 @@ package com.example.mangaapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.mangaapp.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -20,8 +21,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         val bottomNavigationView = binding.bottomNavigationView
-        val navController = findNavController(R.id.fragment)
+        val navController by lazy {
+            val navHostFragment = supportFragmentManager
+                .findFragmentById(R.id.fragment) as NavHostFragment
 
+            navHostFragment.navController
+        }
         bottomNavigationView.setupWithNavController(navController)
 
         val appBarConfiguration = AppBarConfiguration(
