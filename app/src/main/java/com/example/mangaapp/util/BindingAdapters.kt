@@ -13,6 +13,7 @@ import com.example.mangaapp.data.local.entity.FavoritesEntity
 import com.example.mangaapp.data.remote.response.MangaResponsesData
 import com.example.mangaapp.ui.adapter.FavoritesAdapter
 import com.example.mangaapp.ui.adapter.MangaAdapter
+import com.example.mangaapp.ui.adapter.SearchAdapter
 
 @BindingAdapter("imageUrl")
 fun bindImage(imageView: ImageView, imageUrl: String?) {
@@ -40,6 +41,15 @@ fun bindFavoriteRecyclerView(
     data: List<FavoritesEntity>?
 ) {
     val adapter = recyclerView.adapter as FavoritesAdapter?
+    adapter?.submitList(data)
+}
+
+@BindingAdapter("listSearchData")
+fun bindSearchRecyclerView(
+    recyclerView: RecyclerView,
+    data: List<MangaResponsesData>?
+) {
+    val adapter = recyclerView.adapter as SearchAdapter?
     adapter?.submitList(data)
 }
 

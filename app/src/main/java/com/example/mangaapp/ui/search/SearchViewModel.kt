@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mangaapp.data.remote.response.MangaResponses
-import com.example.mangaapp.repository.MangaRepository
 import com.example.mangaapp.repository.SearchRepository
 import com.example.mangaapp.util.Status
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,7 +21,7 @@ class SearchViewModel @Inject constructor(
     private val _mangas = MutableLiveData<MangaResponses>()
     val mangas: LiveData<MangaResponses> = _mangas
 
-    fun getSearch(
+    fun search(
         query: String?
     ): LiveData<MangaResponses> {
         val page = 1
