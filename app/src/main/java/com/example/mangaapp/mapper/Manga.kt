@@ -9,5 +9,5 @@ data class Manga(
     val title: String?,
     val images: String?,
     val scored: Double?,
-    val isFavorite: Boolean = false
+    val isFavorite: Boolean? = false
 ) : Parcelable
