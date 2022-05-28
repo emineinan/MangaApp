@@ -5,33 +5,33 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mangaapp.data.local.entity.FavoritesEntity
 import com.example.mangaapp.databinding.ItemFavoriteMangaGridBinding
+import com.example.mangaapp.mapper.Manga
 
 class FavoritesAdapter :
-    ListAdapter<FavoritesEntity, FavoritesAdapter.MyViewHolder>(DiffCallback) {
+    ListAdapter<Manga, FavoritesAdapter.MyViewHolder>(DiffCallback) {
 
     class MyViewHolder(private var binding: ItemFavoriteMangaGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(manga: FavoritesEntity) {
+        fun bind(manga: Manga) {
             binding.manga = manga
             binding.executePendingBindings()
         }
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<FavoritesEntity>() {
+    companion object DiffCallback : DiffUtil.ItemCallback<Manga>() {
         override fun areItemsTheSame(
-            oldItem: FavoritesEntity,
-            newItem: FavoritesEntity
+            oldItem: Manga,
+            newItem: Manga
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.malId == newItem.malId
         }
 
         override fun areContentsTheSame(
-            oldItem: FavoritesEntity,
-            newItem: FavoritesEntity
+            oldItem: Manga,
+            newItem: Manga
         ): Boolean {
-            return oldItem.imageUrl == newItem.imageUrl
+            return oldItem.title == newItem.title
         }
     }
 

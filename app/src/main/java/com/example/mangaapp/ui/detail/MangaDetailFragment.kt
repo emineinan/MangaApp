@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.mangaapp.data.local.entity.FavoritesEntity
 import com.example.mangaapp.data.remote.response.MangaResponsesData
 import com.example.mangaapp.databinding.FragmentMangaDetailBinding
+import com.example.mangaapp.mapper.DataMapper
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -36,14 +37,6 @@ class MangaDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.fabDetailFav.setOnClickListener {
-            viewModel.setFavorite(
-                FavoritesEntity(
-                    manga.mal_id,
-                    manga.title,
-                    manga.images?.jpg?.largeImageUrl,
-                    manga.scored
-                )
-            )
             Toast.makeText(
                 requireContext(),
                 "${manga.title} added to favorites!",

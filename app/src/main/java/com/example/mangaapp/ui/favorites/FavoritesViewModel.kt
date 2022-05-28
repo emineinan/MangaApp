@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mangaapp.data.local.entity.FavoritesEntity
+import com.example.mangaapp.mapper.Manga
 import com.example.mangaapp.repository.FavoritesRepository
 import com.example.mangaapp.util.Status
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,8 +21,8 @@ class FavoritesViewModel @Inject constructor(
     private val _status = MutableLiveData<Status>()
     val status: LiveData<Status> = _status
 
-    private val _favoriteMangas = MutableLiveData<List<FavoritesEntity>>()
-    val favoriteMangas: LiveData<List<FavoritesEntity>> = _favoriteMangas
+    private val _favoriteMangas = MutableLiveData<List<Manga>>()
+    val favoriteMangas: LiveData<List<Manga>> = _favoriteMangas
 
     init {
         getMangas()

@@ -5,10 +5,6 @@ import com.example.mangaapp.data.local.entity.FavoritesEntity
 
 @Dao
 interface FavoritesDao {
-
-    @Query("SELECT * FROM FavoritesEntity WHERE id=:id")
-    suspend fun getMangaById(id: String): FavoritesEntity?
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavoriteManga(favoritesEntity: FavoritesEntity)
 

@@ -9,8 +9,8 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.mangaapp.R
-import com.example.mangaapp.data.local.entity.FavoritesEntity
 import com.example.mangaapp.data.remote.response.MangaResponsesData
+import com.example.mangaapp.mapper.Manga
 import com.example.mangaapp.ui.adapter.FavoritesAdapter
 import com.example.mangaapp.ui.adapter.MangaAdapter
 import com.example.mangaapp.ui.adapter.SearchAdapter
@@ -38,7 +38,7 @@ fun bindHomeRecyclerView(
 @BindingAdapter("listFavoriteData")
 fun bindFavoriteRecyclerView(
     recyclerView: RecyclerView,
-    data: List<FavoritesEntity>?
+    data: List<Manga>?
 ) {
     val adapter = recyclerView.adapter as FavoritesAdapter?
     adapter?.submitList(data)
@@ -74,7 +74,7 @@ fun bindStatus(statusImageView: ImageView, status: Status?) {
 
 @SuppressLint("SetTextI18n")
 @BindingAdapter("dataCheck")
-fun dataCheck(textView: TextView, data: List<FavoritesEntity>?) {
+fun dataCheck(textView: TextView, data: List<Manga>?) {
     if (data != null) {
         if (data.isEmpty()) {
             textView.text = "No favorite manga added."

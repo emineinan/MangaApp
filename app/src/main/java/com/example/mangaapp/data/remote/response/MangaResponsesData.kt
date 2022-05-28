@@ -52,5 +52,6 @@ data class MangaResponsesData(
     @Json(name = "url")
     val url: String?,
     @Json(name = "volumes")
-    val volumes: Int?
-): Parcelable
+    val volumes: Int?,
+    var isFavorite: Boolean = false,
+) : Parcelable

@@ -4,56 +4,134 @@ import com.example.mangaapp.data.local.entity.FavoritesEntity
 import com.example.mangaapp.data.remote.response.MangaResponsesData
 
 object DataMapper {
-    fun mapResponsesToEntities(input: List<MangaResponsesData>): List<FavoritesEntity> {
-        val mangaList = ArrayList<FavoritesEntity>()
-        input.map {
-            val manga = FavoritesEntity(
-                id = it.mal_id,
-                name = it.title,
-                imageUrl= it.images?.jpg?.largeImageUrl,
-                score = it.scored,
-                isFavorite = false
-            )
-            mangaList.add(manga)
-        }
-        return mangaList
-    }
 
-    fun mapEntitiesToDomain(input: List<FavoritesEntity>): List<Manga> =
-        input.map {
-            Manga(
-                malId = it.id,
-                title = it.name,
-                images = it.imageUrl,
-                scored = it.score,
-                isFavorite = it.isFavorite
-            )
-        }
-
-    fun mapDomainToEntity(input: Manga) = FavoritesEntity(
-        id = input.malId,
-        name = input.title,
-        imageUrl = input.images,
-        score = input.scored,
-        isFavorite = input.isFavorite
-    )
-
-    private fun checkNullOrNot(value: String?): String {
-        return if (value.isNullOrBlank()) "-" else value
-    }
-
-    fun mapSearchToDomain(input: List<MangaResponsesData>): List<Manga> {
-        val mangaList = ArrayList<Manga>()
-        input.map { it ->
+    fun mangaResponsesDataListToMangaList(mangaList: List<MangaResponsesData>): List<Manga> {
+        val mangas = mutableListOf<Manga>()
+        mangaList.forEach {
             val manga = Manga(
                 malId = it.mal_id,
                 title = it.title,
+                title_english = it.titleEnglish,
+                title_japanese = it.titleJapanese,
+                title_synonyms = it.titleSynonyms?.joinToString(),
+                url = it.url,
                 images = it.images?.jpg?.largeImageUrl,
+                type = it.type,
+                chapters = it.chapters,
+                volumes = it.volumes,
+                status = it.status,
+                published = it.published?.string,
                 scored = it.scored,
-                isFavorite = false
+                scored_by = it.scoredBy,
+                rank = it.rank,
+                popularity = it.popularity,
+                members = it.members,
+                synopsis = it.synopsis,
+                authors = it.authors?.joinToString { it.name },
+                serializations = it.serializations?.joinToString { it.name },
+                genres = it.genres?.joinToString { it.name },
+                themes = it.themes?.joinToString { it.name },
+                demographics = it.demographics?.joinToString { it.name },
+                isFavorite = it.isFavorite
+            )
+            mangas.add(manga)
+        }
+        return mangas
+    }
+
+    fun mapFavoriteEntitiesToDomain(input: List<FavoritesEntity>): List<Manga> {
+        val mangas = mutableListOf<Manga>()
+        input.forEach {
+            val manga=  Manga(
+                malId = it.malId,
+                title = it.title,
+                title_english = it.title_english,
+                title_japanese = it.title_japanese,
+                title_synonyms = it.title_synonyms,
+                url = it.url,
+                images = it.images,
+                type = it.type,
+                chapters = it.chapters,
+                volumes = it.volumes,
+                status = it.status,
+                published = it.published,
+                scored = it.scored,
+                scored_by = it.scored_by,
+                rank = it.rank,
+                popularity = it.popularity,
+                members = it.members,
+                synopsis = it.synopsis,
+                authors = it.authors,
+                serializations = it.serializations,
+                genres = it.genres,
+                themes = it.themes,
+                demographics = it.demographics,
+                isFavorite = it.isFavorite
+            )
+            mangas.add(manga)
+        }
+        return mangas
+    }
+
+    fun mapResponsesToEntities(input: List<MangaResponsesData>): List<FavoritesEntity> {
+        val mangaList = ArrayList<FavoritesEntity>()
+        input.map { it ->
+            val manga = FavoritesEntity(
+                malId = it.mal_id,
+                title = it.title,
+                title_english = it.titleEnglish,
+                title_japanese = it.titleJapanese,
+                title_synonyms = it.titleSynonyms.toString(),
+                url = it.url,
+                images = it.images?.jpg?.largeImageUrl,
+                type = it.type,
+                chapters = it.chapters,
+                volumes = it.volumes,
+                status = it.status,
+                published = it.published?.string,
+                scored = it.scored,
+                scored_by = it.scoredBy,
+                rank = it.rank,
+                popularity = it.popularity,
+                members = it.members,
+                synopsis = it.synopsis,
+                authors = it.authors?.joinToString { it.name },
+                serializations = it.serializations?.joinToString { it.name },
+                genres = it.genres?.joinToString { it.name },
+                themes = it.themes?.joinToString { it.name },
+                demographics = it.demographics?.joinToString { it.name },
+                isFavorite = it.isFavorite
             )
             mangaList.add(manga)
         }
         return mangaList
     }
+
+    fun mapDomainToEntity(input: Manga) = FavoritesEntity(
+        malId = input.malId,
+        title = input.title,
+        title_english = input.title_english,
+        title_japanese = input.title_japanese,
+        title_synonyms = input.title_synonyms,
+        url = input.url,
+        images = input.images,
+        type = input.type,
+        chapters = input.chapters,
+        volumes = input.volumes,
+        status = input.status,
+        published = input.published,
+        scored = input.scored,
+        scored_by = input.scored_by,
+        rank = input.rank,
+        popularity = input.popularity,
+        members = input.members,
+        synopsis = input.synopsis,
+        authors = input.authors,
+        serializations = input.serializations,
+        genres = input.genres,
+        themes = input.themes,
+        demographics = input.demographics,
+        isFavorite = input.isFavorite
+    )
+
 }
