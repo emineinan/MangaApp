@@ -31,16 +31,6 @@ class MainActivity : AppCompatActivity() {
             navHostFragment.navController
         }
         bottomNavigationView.setupWithNavController(navController)
-
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.homeFragment,
-                R.id.favoritesFragment,
-                R.id.searchFragment,
-                R.id.mangaDetailFragment
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
         setupNav(navController)
     }
 

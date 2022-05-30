@@ -13,7 +13,4 @@ interface FavoritesDao {
 
     @Delete
     suspend fun deleteFavoriteManga(favoritesEntity: FavoritesEntity)
-
-    @Query("DELETE FROM FavoritesEntity")
-    fun deleteAllFavorites()
 }
