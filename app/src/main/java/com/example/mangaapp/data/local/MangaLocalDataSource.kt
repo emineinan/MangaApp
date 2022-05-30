@@ -21,7 +21,7 @@ class MangaLocalDataSource @Inject constructor(
         return favoritesDao.deleteFavoriteManga(favoritesEntity)
     }
 
-    suspend fun deleteAllFavorites(){
+    fun deleteAllFavorites(){
         return favoritesDao.deleteAllFavorites()
     }
 }

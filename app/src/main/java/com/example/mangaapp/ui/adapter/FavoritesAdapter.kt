@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mangaapp.databinding.ItemFavoriteMangaGridBinding
 import com.example.mangaapp.mapper.Manga
 import com.example.mangaapp.ui.favorites.FavoritesFragmentDirections
-import com.example.mangaapp.ui.search.SearchFragmentDirections
 
 class FavoritesAdapter :
     ListAdapter<Manga, FavoritesAdapter.MyViewHolder>(DiffCallback) {

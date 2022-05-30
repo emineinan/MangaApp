@@ -28,5 +28,5 @@ data class Manga(
     val genres: String?,
     val themes: String?,
     val demographics: String?,
-    val isFavorite: Boolean = false
+    var isFavorite: Boolean = false
 ) : Parcelable

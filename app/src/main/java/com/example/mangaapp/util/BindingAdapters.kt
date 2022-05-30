@@ -14,6 +14,7 @@ import com.example.mangaapp.mapper.Manga
 import com.example.mangaapp.ui.adapter.FavoritesAdapter
 import com.example.mangaapp.ui.adapter.MangaAdapter
 import com.example.mangaapp.ui.adapter.SearchAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 @BindingAdapter("imageUrl")
 fun bindImage(imageView: ImageView, imageUrl: String?) {
@@ -81,5 +82,14 @@ fun dataCheck(textView: TextView, data: List<Manga>?) {
         } else {
             textView.text = ""
         }
+    }
+}
+
+@BindingAdapter("updateBackground")
+fun updateBackground(fabButton: FloatingActionButton, status: Boolean){
+    if (status) {
+        fabButton.setImageResource(R.drawable.ic_favorite)
+    } else {
+        fabButton.setImageResource(R.drawable.ic_favorite_non)
     }
 }
