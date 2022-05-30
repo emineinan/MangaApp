@@ -38,17 +38,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/imageViewDetailBanner" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+        <ToggleButton
             android:id="@+id/fabDetailFav"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            app:backgroundTint="@color/purple_700"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             updateBackground="@{manga.favorite}"
-            app:tint="@color/red"
-            android:contentDescription="@string/favorite_button" />
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/favorite_button"
+            android:textOff=""
+            android:textOn=""
+            app:backgroundTint="@color/red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardView"

@@ -36,24 +36,26 @@ class MangaDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.fabDetailFav.setOnClickListener {
-            manga.isFavorite = true
-            viewModel.setFavorite(manga)
-            Toast.makeText(
-                requireContext(),
-                "${manga.title} added to favorites!",
-                Toast.LENGTH_SHORT
-            ).show()
-
-            updateBackground(manga)
-        }
-    }
-
-    private fun updateBackground(manga: Manga){
-        if (manga.isFavorite) {
-            binding.fabDetailFav.setImageResource(R.drawable.ic_favorite)
-        } else {
-            binding.fabDetailFav.setImageResource(R.drawable.ic_favorite_non)
+        binding.buttonDetailFav.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                manga.isFavorite = true
+                binding.buttonDetailFav.setBackgroundResource(R.drawable.ic_favorite)
+                viewModel.setFavorite(manga)
+                Toast.makeText(
+                    requireContext(),
+                    "${manga.title} added to favorites!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                manga.isFavorite = false
+                binding.buttonDetailFav.setBackgroundResource(R.drawable.ic_favorite_non)
+                viewModel.deleteFavorite(manga)
+                Toast.makeText(
+                    requireContext(),
+                    "${manga.title} removed from favorites!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 }

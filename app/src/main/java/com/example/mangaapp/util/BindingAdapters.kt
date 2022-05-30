@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.ToggleButton
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -86,10 +87,10 @@ fun dataCheck(textView: TextView, data: List<Manga>?) {
 }
 
 @BindingAdapter("updateBackground")
-fun updateBackground(fabButton: FloatingActionButton, status: Boolean){
+fun updateBackground(button: ToggleButton, status: Boolean){
     if (status) {
-        fabButton.setImageResource(R.drawable.ic_favorite)
+        button.setBackgroundResource(R.drawable.ic_favorite)
     } else {
-        fabButton.setImageResource(R.drawable.ic_favorite_non)
+        button.setBackgroundResource(R.drawable.ic_favorite_non)
     }
 }

@@ -23,4 +23,14 @@ class DetailViewModel @Inject constructor(
             }
         }
     }
+
+    fun deleteFavorite(favoritesEntity: Manga){
+        viewModelScope.launch {
+            try {
+                favoritesRepository.deleteFavoriteManga(favoritesEntity)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
 }
