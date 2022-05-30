@@ -39,7 +39,7 @@ class SearchFragment : Fragment() {
             setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     viewModel.search(query).observe(viewLifecycleOwner) {
-                        searchAdapter.submitList(it.data)
+                        searchAdapter.submitList(it)
                     }
                     return true
                 }

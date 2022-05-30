@@ -1,7 +1,8 @@
 package com.example.mangaapp.repository
 
 import com.example.mangaapp.data.remote.network.ApiService
-import com.example.mangaapp.data.remote.response.MangaResponses
+import com.example.mangaapp.mapper.DataMapper
+import com.example.mangaapp.mapper.Manga
 import javax.inject.Inject
 
 class SearchRepository @Inject constructor(
@@ -11,7 +12,13 @@ class SearchRepository @Inject constructor(
         query: String?,
         page: Int?,
         limit: Int?
-    ): MangaResponses? {
-        return mangaService.getSearch(query, page, limit)
+    ): List<Manga> {
+        return DataMapper.mangaResponsesDataListToMangaList(
+            mangaService.getSearch(
+                query,
+                page,
+                limit
+            )?.data
+        )
     }
 }

@@ -2,16 +2,19 @@ package com.example.mangaapp.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mangaapp.databinding.ItemFavoriteMangaGridBinding
 import com.example.mangaapp.mapper.Manga
+import com.example.mangaapp.ui.favorites.FavoritesFragmentDirections
+import com.example.mangaapp.ui.search.SearchFragmentDirections
 
 class FavoritesAdapter :
     ListAdapter<Manga, FavoritesAdapter.MyViewHolder>(DiffCallback) {
 
-    class MyViewHolder(private var binding: ItemFavoriteMangaGridBinding) :
+    class MyViewHolder(var binding: ItemFavoriteMangaGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(manga: Manga) {
             binding.manga = manga
@@ -42,5 +45,10 @@ class FavoritesAdapter :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val manga = getItem(position)
         holder.bind(manga)
+
+        holder.binding.cardViewMangaItem.setOnClickListener {
+            val action = FavoritesFragmentDirections.actionFavoritesFragmentToMangaDetailFragment(manga)
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 }

@@ -2,49 +2,55 @@ package com.example.mangaapp.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mangaapp.data.remote.response.MangaResponsesData
+import com.example.mangaapp.databinding.ItemMangaGridBinding
 import com.example.mangaapp.databinding.ItemSearchMangaGridBinding
+import com.example.mangaapp.mapper.Manga
+import com.example.mangaapp.ui.home.HomeFragmentDirections
+import com.example.mangaapp.ui.search.SearchFragmentDirections
 
 class SearchAdapter :
-    ListAdapter<MangaResponsesData, SearchAdapter.MyViewHolder>(DiffCallback) {
+    ListAdapter<Manga, SearchAdapter.MyViewHolder>(DiffCallback) {
 
-    class MyViewHolder(var binding: ItemSearchMangaGridBinding) :
+    class MyViewHolder(var binding: ItemMangaGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(manga: MangaResponsesData) {
+        fun bind(manga: Manga) {
             binding.manga = manga
             binding.executePendingBindings()
         }
     }
 
-    companion object DiffCallback : DiffUtil.ItemCallback<MangaResponsesData>() {
+    companion object DiffCallback : DiffUtil.ItemCallback<Manga>() {
         override fun areItemsTheSame(
-            oldItem: MangaResponsesData,
-            newItem: MangaResponsesData
+            oldItem: Manga,
+            newItem: Manga
         ): Boolean {
-            return oldItem.mal_id == newItem.mal_id
+            return oldItem.malId == newItem.malId
         }
 
         override fun areContentsTheSame(
-            oldItem: MangaResponsesData,
-            newItem: MangaResponsesData
+            oldItem: Manga,
+            newItem: Manga
         ): Boolean {
-            return oldItem.images?.jpg?.largeImageUrl == newItem.images?.jpg?.largeImageUrl
+            return oldItem.title == newItem.title
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        return MyViewHolder(ItemSearchMangaGridBinding.inflate(LayoutInflater.from(parent.context)))
+        return MyViewHolder(ItemMangaGridBinding.inflate(LayoutInflater.from(parent.context)))
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val manga = getItem(position)
         holder.bind(manga)
 
-        holder.binding.cardViewMangaItem.setOnClickListener {
-
+        holder.binding.cardViewmangaItem.setOnClickListener {
+           val action = SearchFragmentDirections.actionSearchFragmentToMangaDetailFragment(manga)
+            Navigation.findNavController(it).navigate(action)
         }
     }
 }

@@ -47,7 +47,7 @@ fun bindFavoriteRecyclerView(
 @BindingAdapter("listSearchData")
 fun bindSearchRecyclerView(
     recyclerView: RecyclerView,
-    data: List<MangaResponsesData>?
+    data: List<Manga>?
 ) {
     val adapter = recyclerView.adapter as SearchAdapter?
     adapter?.submitList(data)
