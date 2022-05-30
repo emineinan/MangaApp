@@ -7,7 +7,7 @@
 
         <variable
             name="manga"
-            type="com.example.mangaapp.data.remote.response.MangaResponsesData" />
+            type="com.example.mangaapp.mapper.Manga" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +23,7 @@
             android:adjustViewBounds="true"
             android:contentDescription="@string/string_image"
             android:scaleType="centerCrop"
-            app:imageUrl="@{manga.images.jpg.largeImageUrl}"
+            app:imageUrl="@{manga.images}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -67,7 +67,7 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/string_image"
                 android:scaleType="centerCrop"
-                app:imageUrl="@{manga.images.jpg.largeImageUrl}"
+                app:imageUrl="@{manga.images}"
                 tools:src="@tools:sample/avatars" />
         </com.google.android.material.card.MaterialCardView>
 

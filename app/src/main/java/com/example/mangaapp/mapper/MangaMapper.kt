@@ -5,9 +5,9 @@ import com.example.mangaapp.data.remote.response.MangaResponsesData
 
 object DataMapper {
 
-    fun mangaResponsesDataListToMangaList(mangaList: List<MangaResponsesData>): List<Manga> {
+    fun mangaResponsesDataListToMangaList(mangaList: List<MangaResponsesData>?): List<Manga> {
         val mangas = mutableListOf<Manga>()
-        mangaList.forEach {
+        mangaList?.forEach {
             val manga = Manga(
                 malId = it.mal_id,
                 title = it.title,

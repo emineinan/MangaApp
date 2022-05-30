@@ -8,10 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import com.example.mangaapp.data.local.entity.FavoritesEntity
-import com.example.mangaapp.data.remote.response.MangaResponsesData
 import com.example.mangaapp.databinding.FragmentMangaDetailBinding
-import com.example.mangaapp.mapper.DataMapper
+import com.example.mangaapp.mapper.Manga
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,7 +17,7 @@ class MangaDetailFragment : Fragment() {
     private lateinit var binding: FragmentMangaDetailBinding
     private val args: MangaDetailFragmentArgs by navArgs()
     private val viewModel: DetailViewModel by viewModels()
-    private lateinit var manga: MangaResponsesData
+    private lateinit var manga: Manga
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +35,7 @@ class MangaDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.fabDetailFav.setOnClickListener {
+            viewModel.setFavorite(manga)
             Toast.makeText(
                 requireContext(),
                 "${manga.title} added to favorites!",

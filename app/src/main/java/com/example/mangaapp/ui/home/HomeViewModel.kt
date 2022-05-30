@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mangaapp.data.remote.response.MangaResponses
+import com.example.mangaapp.mapper.Manga
 import com.example.mangaapp.repository.MangaRepository
 import com.example.mangaapp.util.Status
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,12 +15,12 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val mangaListRepository: MangaRepository
-): ViewModel() {
+) : ViewModel() {
     private val _status = MutableLiveData<Status>()
     val status: LiveData<Status> = _status
 
-    private val _mangas = MutableLiveData<MangaResponses>()
-    val mangas: LiveData<MangaResponses> = _mangas
+    private val _mangas = MutableLiveData<List<Manga>>()
+    val mangas: LiveData<List<Manga>> = _mangas
 
     init {
         getMangas()
@@ -33,7 +34,7 @@ class HomeViewModel @Inject constructor(
                 _status.value = Status.DONE
             } catch (e: Exception) {
                 _status.value = Status.ERROR
-                _mangas.value?.data= listOf()
+                _mangas.value = listOf()
             }
         }
     }

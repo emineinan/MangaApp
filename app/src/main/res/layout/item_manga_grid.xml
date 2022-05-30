@@ -6,7 +6,7 @@
     <data>
           <variable
               name="manga"
-              type="com.example.mangaapp.data.remote.response.MangaResponsesData" />
+              type="com.example.mangaapp.mapper.Manga" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -27,7 +27,7 @@
                 android:layout_height="250dp"
                 android:contentDescription="@string/string_image"
                 android:scaleType="centerCrop"
-                app:imageUrl="@{manga.images.jpg.largeImageUrl}"
+                app:imageUrl="@{manga.images}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

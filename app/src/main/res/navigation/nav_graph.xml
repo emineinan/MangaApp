@@ -24,7 +24,7 @@
         android:label="@string/detail">
         <argument
             android:name="manga"
-            app:argType="com.example.mangaapp.data.remote.response.MangaResponsesData"
+            app:argType="com.example.mangaapp.mapper.Manga"
             app:nullable="true" />
         <action
             android:id="@+id/action_mangaDetailFragment_to_homeFragment"
