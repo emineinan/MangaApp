@@ -57,8 +57,8 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="bottom|end"
-                    android:layout_marginBottom="16dp"
                     android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
                     android:background="@drawable/round_corner">
 
                     <ToggleButton
@@ -82,8 +82,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start|center"
-                    android:layout_marginTop="16dp"
                     android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="16dp"
                     app:layout_collapseMode="parallax"
@@ -123,7 +123,7 @@
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/acme"
                     android:text="@{manga.title}"
-                    android:textSize="20sp"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
 
                 <TextView

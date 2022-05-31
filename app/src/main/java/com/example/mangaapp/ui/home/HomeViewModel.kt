@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mangaapp.data.remote.response.MangaResponses
 import com.example.mangaapp.mapper.Manga
 import com.example.mangaapp.repository.MangaRepository
 import com.example.mangaapp.util.Status
@@ -23,10 +22,10 @@ class HomeViewModel @Inject constructor(
     val mangas: LiveData<List<Manga>> = _mangas
 
     init {
-        getMangas()
+        getAllMangas()
     }
 
-    private fun getMangas() {
+    fun getAllMangas() {
         viewModelScope.launch {
             _status.value = Status.LOADING
             try {

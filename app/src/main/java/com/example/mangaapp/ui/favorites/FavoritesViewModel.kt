@@ -22,10 +22,10 @@ class FavoritesViewModel @Inject constructor(
     val favoriteMangas: LiveData<List<Manga>> = _favoriteMangas
 
     init {
-        getMangas()
+        getFavorites()
     }
 
-    fun getMangas() {
+    fun getFavorites() {
         viewModelScope.launch {
             _status.value = Status.LOADING
             try {

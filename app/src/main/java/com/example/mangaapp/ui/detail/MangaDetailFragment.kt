@@ -1,7 +1,6 @@
 package com.example.mangaapp.ui.detail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,7 +36,7 @@ class MangaDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonDetailFav.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
+            if (isChecked && !manga.isFavorite) {
                 manga.isFavorite = true
                 binding.buttonDetailFav.setBackgroundResource(R.drawable.ic_favorite)
                 viewModel.setFavorite(manga)

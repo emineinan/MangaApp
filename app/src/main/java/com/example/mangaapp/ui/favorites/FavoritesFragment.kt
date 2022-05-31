@@ -33,6 +33,6 @@ class FavoritesFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.getMangas()
+        viewModel.getFavorites()
     }
 }
