@@ -13,4 +13,7 @@ interface FavoritesDao {
 
     @Delete
     suspend fun deleteFavoriteManga(favoritesEntity: FavoritesEntity)
+
+    @Query("SELECT * FROM FavoritesEntity WHERE mal_id =:mal_id")
+    suspend fun searchManga(mal_id: Int): FavoritesEntity?
 }

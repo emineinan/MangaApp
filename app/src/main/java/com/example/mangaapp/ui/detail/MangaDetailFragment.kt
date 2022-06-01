@@ -19,6 +19,7 @@ class MangaDetailFragment : Fragment() {
     private val args: MangaDetailFragmentArgs by navArgs()
     private val viewModel: DetailViewModel by viewModels()
     private lateinit var manga: Manga
+    private var isSearchedFavorite = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,9 +36,29 @@ class MangaDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.buttonDetailFav.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked && !manga.isFavorite) {
+        manga.malId?.let { viewModel.searchFavoriteManga(it) }
+        initListener()
+        initObserver()
+    }
+
+    private fun initObserver() {
+        viewModel.searchedManga.observe(viewLifecycleOwner) { searchedManga ->
+            if (searchedManga != null) {
+                if (searchedManga.isFavorite) {
+                    isSearchedFavorite = true
+                    binding.buttonDetailFav.setBackgroundResource(R.drawable.ic_favorite)
+                }
+            } else {
+                isSearchedFavorite = false
+            }
+        }
+    }
+
+    private fun initListener() {
+        binding.buttonDetailFav.setOnCheckedChangeListener { _, _ ->
+            if (!isSearchedFavorite) {
                 manga.isFavorite = true
+                isSearchedFavorite=true
                 binding.buttonDetailFav.setBackgroundResource(R.drawable.ic_favorite)
                 viewModel.setFavorite(manga)
                 Toast.makeText(
@@ -45,8 +66,9 @@ class MangaDetailFragment : Fragment() {
                     "${manga.title} added to favorites!",
                     Toast.LENGTH_SHORT
                 ).show()
-            } else {
-                manga.isFavorite = false
+            }
+            else if(isSearchedFavorite){
+                isSearchedFavorite=false
                 binding.buttonDetailFav.setBackgroundResource(R.drawable.ic_favorite_non)
                 viewModel.deleteFavorite(manga)
                 Toast.makeText(

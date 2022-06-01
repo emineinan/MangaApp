@@ -21,4 +21,8 @@ class FavoritesRepository @Inject constructor(
     suspend fun deleteFavoriteManga(manga: Manga) {
         return mangaLocalDataSource.deleteFavoriteManga(DataMapper.mapDomainToEntity(manga))
     }
+
+    suspend fun searchFavoriteManga(malId: Int): FavoritesEntity? {
+        return mangaLocalDataSource.searchFavoriteManga(malId)
+    }
 }
