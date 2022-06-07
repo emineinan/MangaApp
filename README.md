@@ -31,13 +31,20 @@ This app is developed with MVVM + Clean Architecture.
   <tr>
     <td> <b> Manga List </b> </td>
     <td> <b> Manga Detail </b> </td>
-    <td> <b> Favorites </b> </td>
-    <td> <b> Search Manga </b> </td>
   </tr>
   <tr>
      <td valign="top"><img src=https://user-images.githubusercontent.com/56589369/172317741-7cfc982e-f934-45a7-a689-ec36b8ae5ed5.jpg height="480" width="216"<br>
       <td valign="top"><img src=https://user-images.githubusercontent.com/56589369/172317757-c6bd580e-294f-45e5-8cdb-000e13468100.jpg height="480" width="216"<br>
-       <td valign="top"><img src=https://user-images.githubusercontent.com/56589369/172317778-f955986d-678b-4d73-8282-586d5f3695da.jpg height="480" width="216"<br>
+  </tr>
+ </table>
+ 
+  <table>
+  <tr>
+    <td> <b> Favorites </b> </td>
+    <td> <b> Search Manga </b> </td>
+  </tr>
+  <tr>
+      <td valign="top"><img src=https://user-images.githubusercontent.com/56589369/172317778-f955986d-678b-4d73-8282-586d5f3695da.jpg height="480" width="216"<br>
      <td valign="top"><img src=https://user-images.githubusercontent.com/56589369/172317784-5f723393-81c8-48f8-91f9-f8eccdcc2bf2.jpg height="480" width="216"></td>
   </tr>
  </table>
